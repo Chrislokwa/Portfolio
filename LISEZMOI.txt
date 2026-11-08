@@ -1,0 +1,68 @@
+════════════════════════════════════════════════════════════
+ PORTFOLIO — LOKWA BENGE CHRIS
+ Guide d'installation et de personnalisation
+════════════════════════════════════════════════════════════
+
+PRÉREQUIS
+---------
+• Node.js 18 ou plus récent  →  https://nodejs.org
+   (ou Bun : https://bun.sh — plus rapide, optionnel)
+
+DÉMARRER LE PROJET (en local)
+-----------------------------
+1. Décompressez cette archive.
+2. Ouvrez un terminal dans le dossier du projet.
+3. Installez les dépendances :
+
+      npm install
+      (ou : bun install)
+
+4. Lancez le serveur de développement :
+
+      npm run dev
+      (ou : bun run dev)
+
+5. Ouvrez http://localhost:3000 dans votre navigateur.
+
+CONSTRUIRE POUR LA PRODUCTION
+-----------------------------
+   npm run build
+   npm start
+
+PERSONNALISER LE CONTENU
+------------------------
+• Tous les textes (nom, à propos, compétences, projets,
+  expériences, formations, email…) sont centralisés dans :
+
+      src/lib/portfolio-data.ts
+
+  Modifiez ce fichier : le site se met à jour automatiquement.
+
+• PHOTO : déposez simplement votre photo à l'emplacement :
+
+      public/photo.jpg
+
+  Elle s'affichera automatiquement à la place du cadre
+  « Votre photo ». Format conseillé : carré (800×800 px).
+
+• CV : remplacez le fichier public/CV_LOKWA_BENGE_CHRIS.pdf
+  par une nouvelle version si besoin (gardez le même nom).
+
+• Couleurs : palette claire/sombre dans
+  src/app/globals.css (variables --primary, --background…).
+
+PUBLIER LE SITE EN LIGNE (gratuit)
+----------------------------------
+Le plus simple : déployez sur Vercel (la plateforme de Next.js)
+1. Créez un compte sur https://vercel.com
+2. Poussez ce projet sur GitHub.
+3. Dans Vercel : « Add New Project » → importez le dépôt → Deploy.
+Votre portfolio sera en ligne sur une adresse en .vercel.app
+(vous pourrez y brancher votre propre nom de domaine).
+
+NOTE
+----
+Le dossier node_modules n'est pas inclus dans l'archive
+(trop volumineux) : c'est normal, `npm install` le recrée.
+Le fichier .env du sandbox n'est pas nécessaire ici.
+════════════════════════════════════════════════════════════
