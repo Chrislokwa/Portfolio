@@ -3,6 +3,7 @@ import { Inter, Lora } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "@/components/theme-provider";
+import { identity } from "@/lib/portfolio-data";
 
 /* Typographie du portfolio :
    - Lora (serif)  → titres élégants
@@ -19,10 +20,16 @@ const lora = Lora({
   display: "swap",
 });
 
+const siteUrl = "https://chrislokwa.vercel.app";
+
 export const metadata: Metadata = {
-  title: "Lokwa Benge Chris · Portfolio — Informatique de Gestion",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "Lokwa Benge Chris | Développeur web Python et Django à Kinshasa",
+    template: "%s | Lokwa Benge Chris",
+  },
   description:
-    "Portfolio de Lokwa Benge Chris : diplômé en informatique de gestion, développeur web Python/Django et gestionnaire financier. Projets, compétences, expériences et contact.",
+    "Découvrez le portfolio de Lokwa Benge Chris, développeur web Python et Django à Kinshasa, diplômé en informatique de gestion. Projets, compétences, parcours et contact.",
   keywords: [
     "Lokwa Benge Chris",
     "portfolio",
@@ -34,6 +41,15 @@ export const metadata: Metadata = {
     "RD Congo",
   ],
   authors: [{ name: "Lokwa Benge Chris" }],
+  creator: "Lokwa Benge Chris",
+  applicationName: "Portfolio de Lokwa Benge Chris",
+  category: "technology",
+  alternates: { canonical: "/", languages: { "fr-CD": "/" } },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large" },
+  },
   icons: {
     icon: "/favicon.svg",
   },
@@ -42,7 +58,14 @@ export const metadata: Metadata = {
     description:
       "Développeur web (Python/Django) & gestion financière — des solutions de gestion sur mesure.",
     type: "website",
-    locale: "fr_FR",
+    locale: "fr_CD",
+    siteName: "Portfolio de Lokwa Benge Chris",
+  },
+  twitter: {
+    card: "summary",
+    title: "Lokwa Benge Chris | Développeur web Python et Django",
+    description:
+      "Portfolio, projets et parcours de Lokwa Benge Chris, développeur web à Kinshasa.",
   },
 };
 
@@ -63,7 +86,31 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${lora.variable} font-sans antialiased bg-background text-foreground`}
       >
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "Person",
+                url: siteUrl,
+                name: identity.fullName,
+                jobTitle: "Développeur web Python et Django",
+                description:
+                  "Diplômé en informatique de gestion, spécialisé en développement web Python/Django et gestion financière.",
+                email: identity.email,
+                address: {
+                  "@type": "PostalAddress",
+                  addressLocality: "Kinshasa",
+                  addressCountry: "CD",
+                },
+                knowsLanguage: ["fr", "en", "ln"],
+                sameAs: [identity.githubUrl, identity.linkedinUrl],
+              }),
+            }}
+          />
+          {children}
+        </ThemeProvider>
         <Toaster />
       </body>
     </html>

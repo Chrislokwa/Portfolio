@@ -126,6 +126,25 @@ export const projects: Project[] = [
     demoUrl: "https://hebdocaisse.vercel.app/",
     screenshotPath: "/hebdocaisse.png",
   },
+  {
+    title: "Imo Manager — Gestion locative",
+    period: "Projet personnel",
+    context: "Gestion de biens immobiliers et de locations",
+    description:
+      "Application web Django de gestion locative pour suivre un portefeuille de biens, les locataires, les contrats de bail et les paiements. Elle propose un tableau de bord avec revenus et alertes de fin de bail, la recherche de locataires, la détection des périodes de bail qui se chevauchent, le suivi des retards, des reçus imprimables et l’export des données. Le symbole monétaire est personnalisable, sans conversion des montants.",
+    tech: [
+      "Python",
+      "Django 6.1",
+      "Django ORM",
+      "SQLite / PostgreSQL",
+      "Tailwind CSS",
+      "HTMX",
+      "Alpine.js",
+      "Chart.js",
+    ],
+    githubUrl: "https://github.com/Chrislokwa/imo-manager",
+    screenshotPath: "/imo manager.png",
+  },
 ];
 
 export type Experience = {
